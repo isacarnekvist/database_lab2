@@ -1,0 +1,16 @@
+{% extends 'd2d_app/base.html' %}
+
+{% block title %}
+D2D register page
+{% endblock %}
+
+{% block content %}
+    <div class="login_box">
+        <form action={% url 'register_post' %} method="post">
+            {% csrf_token %}
+            <input type="email" name="username" placeholder="Enter user e-mail"/><br/>
+            <input type="password" name="password" placeholder="Enter password"/><br/>
+            <input type="submit" value="Create user"/>
+        </form>    
+    </div>
+{% endblock %}

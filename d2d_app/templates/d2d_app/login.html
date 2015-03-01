@@ -1,0 +1,18 @@
+{% extends 'd2d_app/base.html' %}
+
+{% block title %}
+D2D login page
+{% endblock %}
+
+{% block content %}
+    <div class="login_box">
+        <form action={% url 'check_login' %} method="post">
+            {% csrf_token %}
+            <input type="email" name="username" placeholder="Enter user e-mail"/><br/>
+            <input type="password" name="password" placeholder="Enter password"/><br/>
+            <input type="submit" value="Log in"/>
+        </form>    
+    </br>
+    At the moment, the site does not handle incorrect data being entered.
+    </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "d2d_app/base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{# List all the contracts for stuff selling #}
+{% if selling %}
+    <div class="content_notice">
+    Selling the following items:
+    </div>
+    {% for contract in selling %}
+        <div class="content_box">
+        {{ contract.package.description }}</br>
+        <a href={% url 'remove' contract.id %}>Remove item</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="content_notice">
+    Not selling anything at the moment, do that <a href={% url 'add_contract' %}>here!</a>
+    </div>
+{% endif %}
+
+{# List all buying #}
+{% if buying %}
+    <div class="content_notice">
+    Buying the following items:
+    </div>
+    {% for contract in buying %}
+        <div class="content_box">
+        {{ contract.package.description }}</br>
+        {% if contract.payed %}
+            If satisfied with delivery click <a href={% url 'satisfied' contract.id %}>here</a>.
+        {% else %}
+            <a href={% url 'pay' contract.id %}>Pay item</a>
+        {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="content_notice">
+    Not buying anything at the moment, do that <a href={% url 'add_contract' %}>here!</a>
+    </div>
+{% endif %}
+
+
+{% else %}
+{# User is not logged in #}
+    <div class="content_box">
+    Welcome to D2D, where the deal is sealed!</br>
+    Please register!</br>
+    </div>
+{% endif %}
+
+{% endblock %}            

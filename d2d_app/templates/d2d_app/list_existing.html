@@ -1,0 +1,39 @@
+{% extends 'd2d_app/base.html' %}
+
+{% block content %}
+{% if selling %}
+    <div class="content_notice">
+        Selling the following object(s): 
+    </div>
+{% for contract in selling %}
+    <div class="content_box">
+        Buyer: {{ contract.buyer }}<br/>
+        Item selling: {{ contract.delivery.package.description }}
+    </div>
+{% endfor %}
+{% else %}
+     <div class="content_box">
+        <p>Not selling anything at the moment, do it <a href={% url 'add_contract' %}>here!</a></p>
+    </div>
+{% endif %}
+{% if buying %}
+    <div class="content_notice">
+        Buying the following object(s): 
+    </div>
+{% for contract in buying %}
+    <div class="content_box">
+        Seller: {{ contract.seller }} </br>
+        Item buying: {{ contract.delivery.package.description }}</br>
+        <form action="pay" method="post">
+            <input type="text" placeholder="Credit card number"/>
+            <input type="submit" value="Deposit payment of {{ contract.delivery.package.price }} SEK"/>
+        </form>
+    </div>
+{% endfor %}
+{% else %}
+     <div class="content_notice">
+        <p>Not buying anything at the moment, do it <a href="http://www.blocket.se/">here</a></p>
+    </div>
+{% endif %}
+
+{% endblock %}

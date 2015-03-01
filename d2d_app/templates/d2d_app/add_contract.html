@@ -1,0 +1,23 @@
+{% extends 'd2d_app/base.html' %}
+{% block content %}
+{% if added_success %}
+    <div class="content_box">
+    Contract added!
+    </div>
+{% endif %}
+
+<div class="content_box">
+<p>Add details for a new contract below, all fields required:</p>
+    <form method="post" action={% url 'add_contract' %}>
+            {% csrf_token %}
+        <input type="text" name="buyer" placeholder="Buyer email"/></br>
+        <input type="text" name="height" placeholder="height"/>
+        <input type="text" name="width" placeholder="width"/>
+        <input type="text" name="length" placeholder="length"/></br>
+        <input type="text" name="weight" placeholder="weight"/>
+        <input type="text" name="price" placeholder="price"/></br>
+        <input type="text" size=65 name="description" placeholder="Item description"/></br>
+        <input type="submit" value="Add contract"/>
+    </form>
+</div>
+{% endblock %}
