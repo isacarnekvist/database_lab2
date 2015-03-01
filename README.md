@@ -1,6 +1,6 @@
 ![](d2d_app/static/d2d_app/logo.png)
 # Database lab 2
-This is a shipping service for things bought on blocket, ebay, ... The company holds payment as escrow until buyer recieves
+This is a shipping service for things bought on blocket, ebay etc. The company holds payment as escrow until buyer recieves
 a package and is satisfyed.
 
 ## Known bugs
