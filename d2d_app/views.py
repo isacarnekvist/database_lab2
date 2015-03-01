@@ -61,7 +61,7 @@ def satisfied(request, contract_id):
 
 def add_contract_view(request):
     """ If post contains a new entry, this is added to database, otherwise a new one can be added """
-    # TODO Add checks for valid data, or learn django built-ins (probably easier?)
+    # TODO Add checks for valid data, learn how to nicely style the generic views
     new_contract = request.POST
     add_error = False
     if len(new_contract) == 0:
