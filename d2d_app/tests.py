@@ -25,7 +25,12 @@ class TestCorrectness(TestCase):
         cnt2 = Contract.objects.create(seller=cu2, buyer=cu1, package=p2)
 
     def test_details(self):
-        pass
+        user1 = User.objects.get(username='test1@kth.se')
+        cust1 = Customer.objects.get(user=user1)
+        self.assertEqual(cust1.bankAccountNo, 1234567890)
         
     def test_relations(self):
-        pass
+        user1 = User.objects.get(username='test1@kth.se')
+        cust1 = Customer.objects.get(user=user1)
+        cont1 = Contract.objects.get(seller=cust1)
+        self.assertEqual(cont1.package.description, 'En liten grej')
