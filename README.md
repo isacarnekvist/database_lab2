@@ -1,5 +1,5 @@
 ![](d2d_app/static/d2d_app/logo.png)
-# Database lab 2
+# Database lab 2 (using django)
 This is a shipping service for things bought on blocket, ebay etc. The company holds payment as escrow until buyer recieves
 a package and is satisfied.
 
